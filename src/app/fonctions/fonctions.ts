@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AssignationDto } from '../dtos/assignation';
+import { NavigationService } from '../navigation.service';
 
 @Component({
   selector: 'app-fonctions',
@@ -24,7 +25,7 @@ export class FonctionsComponent implements OnInit {
     return this.assignations.slice(start, start + this.pageSize);
   }
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private navigationService: NavigationService) {}
 
   ngOnInit(): void {
     this.assignations = history.state?.assignations ?? [];
@@ -37,18 +38,7 @@ export class FonctionsComponent implements OnInit {
   }
 
   acceder(assignation: AssignationDto): void {
-    sessionStorage.setItem('selectedFonction', JSON.stringify(assignation));
-
-    const type = assignation.foncact_Typfonc_Id;
-    const dashboardExecution = ['COF', 'PIP', 'OBM', 'CPT', 'ORD', 'OBS', 'GES'];
-
-    if (dashboardExecution.includes(type)) {
-      window.location.href = 'https://dev1.dgf.sn/dashboard';
-    } else if (type === 'OPSCM') {
-      window.location.href = 'http://localhost:4200/dashboards/dashboard4';
-    } else {
-      this.router.navigate(['/non-supporte']);
-    }
+    this.navigationService.acceder(assignation);
   }
 
   seDeconnecter(): void {
