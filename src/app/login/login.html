@@ -1,0 +1,68 @@
+<div class="login-container">
+  <!-- Left side with image -->
+  <div class="login-left overflow-hidden">
+    <img src="https://dev1.dgf.sn/assets/images/image_login_sysbudgep.jpeg" alt="SYSBUDGEP" class="w-100 h-100" />
+  </div>
+
+  <!-- Right side with form -->
+  <div class="login-right d-flex align-items-center justify-content-center p-4 bg-white">
+    <div class="w-100" style="max-width:400px">
+
+      <div class="login-header text-end mb-4">
+        <div class="logo-small mb-1">
+          <span class="logo-green">SYS</span><span class="logo-dark">BUDGE</span><span class="logo-greenP">P</span>
+        </div>
+        <p class="tagline mb-0">Le Système Support du Budget <span class="highlight">Programme</span></p>
+      </div>
+
+      <form (ngSubmit)="onLogin()" novalidate>
+
+        <div class="mb-3">
+          <label for="username" class="form-label fw-semibold" style="color:#00458f">Identifiant</label>
+          <input
+            type="text"
+            id="username"
+            [(ngModel)]="username"
+            name="username"
+            class="form-control"
+            [class.is-invalid]="errorMessage && !username.trim()"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label fw-semibold" style="color:#00458f">Mot de Passe</label>
+          <input
+            type="password"
+            id="password"
+            [(ngModel)]="password"
+            name="password"
+            class="form-control"
+            [class.is-invalid]="errorMessage && !password.trim()"
+          />
+        </div>
+
+        <div *ngIf="errorMessage" class="alert alert-danger py-2 px-3 mb-3" role="alert">
+          {{ errorMessage }}
+        </div>
+
+        <div class="mb-4">
+          <label for="database" class="form-label fw-semibold" style="color:#00458f">Base de données</label>
+          <select [(ngModel)]="database" name="database" id="database" class="form-select">
+            <option value="BASE DE FORMATION (DEBUG)">BASE DE FORMATION (DEBUG)</option>
+            <option value="BASE DE PRODUCTION">BASE DE PRODUCTION</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-login w-100" [disabled]="loading">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status"></span>
+          {{ loading ? 'Connexion...' : '⮕ Se Connecter' }}
+        </button>
+      </form>
+
+      <div class="footer-section text-end mt-4 pt-3 border-top">
+        <p class="footer-title mb-1">Activer Windows</p>
+        <p class="footer-text mb-0">Accédez aux paramètres pour activer Windows.</p>
+      </div>
+    </div>
+  </div>
+</div>

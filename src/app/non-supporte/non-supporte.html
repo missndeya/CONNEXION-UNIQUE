@@ -1,0 +1,14 @@
+<div class="error-page">
+  <div class="error-card">
+    <div class="error-icon">⚠</div>
+    <h2 class="error-title">Fonction non prise en charge</h2>
+    <p class="error-message">
+      Cette fonction n'est pas encore disponible dans cette application.<br>
+      
+    </p>
+    <button class="btn-retour" (click)="retour()" [disabled]="loading">
+      @if (loading) { <span class="spinner"></span> } @else { &#x2190; }
+      Retour aux fonctions
+    </button>
+  </div>
+</div>

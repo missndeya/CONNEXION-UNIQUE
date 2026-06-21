@@ -1,0 +1,15 @@
+{
+  "/proxy": {
+    "target": "https://dev1.dgf.sn:8444",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/proxy": ""
+    },
+    "headers": {
+      "Origin": "https://dev1.dgf.sn:8444",
+      "Referer": "https://dev1.dgf.sn:8444/"
+    },
+    "logLevel": "debug"
+  }
+}

@@ -1,0 +1,68 @@
+<div class="page-wrapper">
+
+
+  <!-- Main content area -->
+  <div class="main-content d-flex justify-content-center align-items-start">
+
+    <div class="background-section position-absolute top-0 start-0 w-100 h-100">
+      <img src="https://dev1.dgf.sn/assets/images/dapina1.jpeg" alt="SYSBUDGEP" class="bg-image w-100 h-100" />
+    </div>
+
+    <!-- Table overlay -->
+    <div class="table-overlay position-relative">
+      <div class="table-card shadow rounded overflow-hidden">
+
+        <table class="table table-bordered mb-0 fonctions-table">
+          <thead>
+            <tr>
+              <th>FONCTIONS</th>
+              <th>TYPES DE FONCTION</th>
+              <th class="text-center" style="width:130px">ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of pagedAssignations">
+              <td>{{ a.foncact_Lib }}</td>
+              <td>{{ a.typfonc_Lib }}</td>
+              <td class="text-center">
+                <button class="btn btn-acceder btn-sm" (click)="acceder(a)">Accéder</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Footer : déconnexion + pagination -->
+        <div class="table-footer d-flex align-items-center justify-content-between px-3 py-2 border-top bg-light">
+          <button class="btn btn-outline-danger " (click)="seDeconnecter()">
+            &#x2190; Se Déconnecter
+          </button>
+          <nav>
+            <ul class="pagination pagination-sm mb-0">
+              <li class="page-item" [class.disabled]="currentPage === 1">
+                <button class="page-link" (click)="goToPage(1)" [disabled]="currentPage === 1">&#8249;&#8249;</button>
+              </li>
+              <li class="page-item" [class.disabled]="currentPage === 1">
+                <button class="page-link" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">&#8249;</button>
+              </li>
+              <li
+                *ngFor="let p of [].constructor(totalPages) | slice:0:totalPages; let i = index"
+                class="page-item"
+                [class.active]="currentPage === i + 1"
+              >
+                <button class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</button>
+              </li>
+              <li class="page-item" [class.disabled]="currentPage === totalPages">
+                <button class="page-link" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">&#8250;</button>
+              </li>
+              <li class="page-item" [class.disabled]="currentPage === totalPages">
+                <button class="page-link" (click)="goToPage(totalPages)" [disabled]="currentPage === totalPages">&#8250;&#8250;</button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

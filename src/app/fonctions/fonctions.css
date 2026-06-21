@@ -1,0 +1,78 @@
+/* ===== Layout ===== */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== Main content ===== */
+.main-content {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-image { object-fit: cover; opacity: 0.35; }
+
+/* ===== Table overlay ===== */
+.table-overlay {
+  width: 80%;
+  z-index: 1;
+  padding-top: 45px;
+}
+
+/* Table header color & text */
+.fonctions-table thead tr { background: #00458f !important; }
+.fonctions-table thead th {
+  color: white !important;
+  padding: 22px 26px;
+  font-size: 13px;
+  font-weight: 700;
+  background: #00458f !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-color: #1a5ca8 !important;
+}
+
+.fonctions-table tbody tr:hover { background: #f0faf5; }
+.fonctions-table tbody td { font-size: 13px; color: #333; }
+
+/* Se déconnecter button */
+.btn-deconnecter {
+  color: #dc3545;
+  background: transparent;
+  border: 1.5px solid #dc3545;
+  font-size: 13px;
+  padding: 8px 18px;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-deconnecter:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+/* Accéder button */
+.btn-acceder {
+  background: #ffffff;
+  color: #00a85c;
+  border: 1px solid #00a85c;
+  font-size: 13px;
+}
+.btn-acceder:hover {
+  background: #00a85c;
+  color: white;
+}
+
+/* Pagination */
+.page-item.active .page-link {
+  background-color: #00458f;
+  border-color: #00458f;
+  color: white !important;
+}
+.page-link { color: #00458f; }
+.page-link:hover {
+  color: #fff;
+  background-color: #1a5ca8;
+  border-color: #1a5ca8;
+}
