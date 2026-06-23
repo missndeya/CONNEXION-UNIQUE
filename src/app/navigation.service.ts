@@ -16,7 +16,7 @@ export class NavigationService {
     if (this.dashboardExecution.includes(type)) {
       window.location.href = 'https://dev1.dgf.sn/dashboard';
     } else if (type === 'OPSCM') {
-      window.location.href = 'http://localhost:4200/dashboards/dashboard4';
+      window.location.href = 'http://localhost:4200/dashboards/dashboard';
     } else {
       this.router.navigate(['/non-supporte']);
     }
