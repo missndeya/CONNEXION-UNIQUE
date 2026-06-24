@@ -15,7 +15,7 @@ export class SharedService {
   showToast(message: string, type: 'success' | 'danger' | 'warning' | 'info' = 'info'): void {
     if (this.dismissTimer) clearTimeout(this.dismissTimer);
     this._toast.set({ message, type });
-    this.dismissTimer = setTimeout(() => this._toast.set(null), 10000);
+    this.dismissTimer = setTimeout(() => this._toast.set(null), 5000);
   }
 
   clearToast(): void {
