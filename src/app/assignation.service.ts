@@ -11,7 +11,8 @@ export class AssignationService {
 
   constructor(private http: HttpClient) {}
 
-  assignationParMatricule(user: ActeurDto, page: number, size: number): Observable<PageResponse<AssignationDto>> {
+
+    assignationParMatricule(user: ActeurDto, page: number, size: number): Observable<PageResponse<AssignationDto>> {
     return this.http.get<PageResponse<AssignationDto>>(
       `${this.baseUrl}/assignations/assignationMatriculeActive/${user.actMat}`,
       { params: { page: page.toString(), pageSize: size.toString() } }

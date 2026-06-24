@@ -5,4 +5,5 @@ export interface ActeurDto {
   actFoncactId: string;
   actSurnom: string | null;
   token: string;
+  code: string;
 }
