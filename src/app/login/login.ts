@@ -37,23 +37,10 @@ export class LoginComponent {
     private cdr: ChangeDetectorRef
   ) {}
 
-  mode: string | null = null;
 
   ngOnInit(): void {
   
-
-    console.log('xxxxxxxxx');
-  // éventuellement appel backend logout
-  // this.authService.logout()
-  this.mode = this.router.parseUrl(this.router.url).queryParams['mode'] || null;
-  if(this.mode !== 'fonctions') {
     sessionStorage.clear();
-    console.log('mmmmmmmmmmmmM');
-    this.router.navigateByUrl('/login');
-  }  
-  if (this.mode === 'fonctions') {
-  this.chargerFonctions();
-}
 }
 
   onLogin(): void {

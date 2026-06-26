@@ -15,8 +15,14 @@ export class NavigationService {
 
 
   acceder(assignation: AssignationDto): void {
+
+    // Vérifier si l'utilisateur veut changer de fonction
+    const modeChangerFonction = sessionStorage.getItem('modeChangerFonction') === 'true';
+
     const currentUser = sessionStorage.getItem('currentUser');
     this.acteur = JSON.parse(currentUser || 'null') as ActeurDto | null;
+
+    // Récupérer le code généré par le backend lors de la connexion, ce code sera utilisé par l'app métier pour récupérer son token
     const code = this.acteur?.code;
 
     sessionStorage.setItem('selectedFonction', JSON.stringify(assignation));
@@ -24,11 +30,12 @@ export class NavigationService {
     const type = assignation.foncact_Typfonc_Id;
 
     if (this.dashboardExecution.includes(type)) {
-      console.log('EXXXXXXXX ', environment.dashboardExecutionUrl+`/callback?cd=${encodeURIComponent(code?code : '')}&fc=${encodeURIComponent(assignation.foncact_Id ?? '')}`);
-      window.location.href = `${environment.dashboardExecutionUrl}/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(assignation.foncact_Id ?? '')}`;
+      console.log('EXXXXXXXX ', environment.dashboardExecutionUrl+`/callback?cd=${encodeURIComponent(code?code : '')}`);
+
+      window.location.href = `${environment.dashboardExecutionUrl}/callback?cd=${encodeURIComponent(code ?? '')}`;
     } else if (type === 'OPSCM') {
-      console.log('ELLLLLLLL ', environment.dashboardElaborationUrl+`/callback?cd=${encodeURIComponent(code?code : '')}&fc=${encodeURIComponent(assignation.foncact_Id ?? '')}`);
-      window.location.href = `${environment.dashboardElaborationUrl}/callback?cd=${encodeURIComponent(code?code : '')}&fc=${encodeURIComponent(assignation.foncact_Id ?? '')}`;
+      console.log('ELLLLLLLL ', environment.dashboardElaborationUrl+`/callback?cd=${encodeURIComponent(code?code : '')}`);
+      window.location.href = `${environment.dashboardElaborationUrl}/callback?cd=${encodeURIComponent(code?code : '')}`;
     } else {
       this.router.navigate(['/non-supporte']);
     }
