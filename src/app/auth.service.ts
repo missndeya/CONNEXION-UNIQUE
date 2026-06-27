@@ -13,4 +13,8 @@ export class AuthService {
   login(identifiant: IdentifiantDto): Observable<ActeurDto> {
     return this.http.post<ActeurDto>(environment.loginUrl, identifiant);
   }
+
+  setInfos(acteur: ActeurDto): Observable<any> {
+    return this.http.post<ActeurDto>(`${environment.backExecutionUrl}/auth/setInfos`, acteur);
+  }
 }
