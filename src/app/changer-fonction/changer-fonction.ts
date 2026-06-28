@@ -57,11 +57,16 @@ export class ChangerFonction implements OnInit {
 
           } else if (assignations.length === 1) {
 
-            // si tu veux accéder directement
-            this.navigationService.acceder(assignations[0]);
-
-            this.router.navigate(['/fonctions'], {
-              state: { assignations }
+            const assignation = assignations[0];
+            this.assignationService.modulesByTypeFonction(assignation.foncact_Typfonc_Id).subscribe({
+              next: (modules) => {
+                if (modules.length > 0) {
+                  this.navigationService.acceder(modules[0], assignation);
+                } else {
+                  this.router.navigate(['/fonctions'], { state: { assignations } });
+                }
+              },
+              error: () => this.router.navigate(['/fonctions'], { state: { assignations } })
             });
 
           } else {

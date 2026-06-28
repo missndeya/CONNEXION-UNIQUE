@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AssignationDto } from '../dtos/assignation';
+import { AssignationService } from '../assignation.service';
 import { NavigationService } from '../navigation.service';
 
 @Component({
@@ -13,8 +14,14 @@ import { NavigationService } from '../navigation.service';
 })
 export class FonctionsComponent implements OnInit {
   assignations: AssignationDto[] = [];
+  loadingId: string | null = null;
   currentPage = 1;
   readonly pageSize = 10;
+  readonly supportedFonctions = ['GES', 'OPSCM', 'ORD'];//ORD est à ENLEVER 
+
+  isSupporte(assignation: AssignationDto): boolean {
+    return this.supportedFonctions.includes(assignation.foncact_Typfonc_Id);
+  }
 
   get totalPages(): number {
     return Math.ceil(this.assignations.length / this.pageSize);
@@ -25,7 +32,11 @@ export class FonctionsComponent implements OnInit {
     return this.assignations.slice(start, start + this.pageSize);
   }
 
-  constructor(private router: Router, private navigationService: NavigationService) {}
+  constructor(
+    private router: Router,
+    private assignationService: AssignationService,
+    private navigationService: NavigationService
+  ) {}
 
   ngOnInit(): void {
     this.assignations = history.state?.assignations ?? [];
@@ -38,7 +49,20 @@ export class FonctionsComponent implements OnInit {
   }
 
   acceder(assignation: AssignationDto): void {
-    this.navigationService.acceder(assignation);
+    this.loadingId = assignation.foncact_Id;
+    this.assignationService.modulesByTypeFonction(assignation.foncact_Typfonc_Id).subscribe({
+      next: (modules) => {
+        this.loadingId = null;
+        if (modules.length === 1) {
+          this.navigationService.acceder(modules[0], assignation);
+        } else {
+          this.router.navigate(['/modules'], { state: { modules, assignation, assignations: this.assignations } });
+        }
+      },
+      error: () => {
+        this.loadingId = null;
+      }
+    });
   }
 
   seDeconnecter(): void {

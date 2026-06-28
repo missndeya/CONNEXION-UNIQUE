@@ -25,7 +25,14 @@
               <td>{{ a.foncact_Lib }}</td>
               <td>{{ a.typfonc_Lib }}</td>
               <td class="text-center">
-                <button class="btn btn-acceder btn-sm" (click)="acceder(a)">Accéder</button>
+                <button
+                  class="btn btn-acceder btn-sm"
+                  [disabled]="!isSupporte(a) || loadingId === a.foncact_Id"
+                  (click)="acceder(a)"
+                >
+                  <span *ngIf="loadingId === a.foncact_Id" class="spinner-border spinner-border-sm" role="status"></span>
+                  <span *ngIf="loadingId !== a.foncact_Id">Accéder</span>
+                </button>
               </td>
             </tr>
           </tbody>
