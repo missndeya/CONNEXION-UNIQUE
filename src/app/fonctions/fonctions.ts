@@ -18,8 +18,7 @@ export class FonctionsComponent implements OnInit {
   currentPage = 1;
   currentFonctId: String = "";
   readonly pageSize = 10;
-  readonly supportedFonctions = ['GES', 'OPSCM', 'ORD'];//ORD est à ENLEVER 
-
+  readonly supportedFonctions = ['GES', 'OPSCM', 'ORD','COF','OBS','AGO'];
   isSupporte(assignation: AssignationDto): boolean {
     return this.supportedFonctions.includes(assignation.foncact_Typfonc_Id);
   }

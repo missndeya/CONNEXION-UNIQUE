@@ -7,6 +7,7 @@ import { finalize } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { AssignationService } from '../assignation.service';
 import { SharedService } from '../shared.service';
+import { NavigationService } from '../navigation.service';
 import { ActeurDto } from '../dtos/acteur.dto';
 import { AssignationDto } from '../dtos/assignation';
 
@@ -32,6 +33,7 @@ export class LoginComponent {
     private authService: AuthService,
     private assignationService: AssignationService,
     private sharedService: SharedService,
+    private navigationService: NavigationService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -76,8 +78,7 @@ export class LoginComponent {
             .filter(Boolean)
             .join(' ') || acteur.actMat;
 
-          this.sharedService.showToast(`Bienvenue  ${fullname}`, 'success');
-          this.chargerFonctions();
+          this.chargerFonctions(fullname);
         },
         error: (err: HttpErrorResponse) => {
           if (err.status === 401) {
@@ -89,7 +90,7 @@ export class LoginComponent {
       });
   }
 
-  private chargerFonctions(): void {
+  private chargerFonctions(fullname: string): void {
     if (!this.currentUser) return;
 
     this.assignationService.assignationParMatricule(this.currentUser, 0, this.pageSize).subscribe({
@@ -97,8 +98,10 @@ export class LoginComponent {
         const assignations = data.content;
         console.log('Assignations:', assignations);
         if (assignations.length > 1) {
+          this.sharedService.showToast(`Bienvenue  ${fullname}`, 'success');
           this.router.navigate(['/fonctions'], { state: { assignations } });
         } else if (assignations.length === 1) {
+          this.sharedService.showToast(`Bienvenue  ${fullname}`, 'success');
           this.acceder(assignations[0]);
         } else {
           this.errorMessage = "Aucune fonction assignée à cet utilisateur.";
@@ -113,9 +116,13 @@ export class LoginComponent {
   private acceder(assignation: AssignationDto): void {
     this.assignationService.modulesByTypeFonction(assignation.foncact_Typfonc_Id).subscribe({
       next: (modules) => {
-        this.router.navigate(['/modules'], {
-          state: { modules, assignation, assignations: [assignation] }
-        });
+        if (modules.length === 1) {
+          this.navigationService.acceder(modules[0], assignation);
+        } else {
+          this.router.navigate(['/modules'], {
+            state: { modules, assignation, assignations: [assignation] }
+          });
+        }
       },
       error: () => {
         this.errorMessage = "Erreur lors du chargement des modules.";
