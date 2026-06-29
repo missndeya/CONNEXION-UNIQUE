@@ -9,6 +9,7 @@ import { environment } from '../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AssignationService {
+
   private readonly baseUrl = 'https://dev1.dgf.sn:8444/sysbudgep-authentification';
   private readonly executionUrl = environment.backExecutionUrl;
 
@@ -17,7 +18,7 @@ export class AssignationService {
 
     assignationParMatricule(user: ActeurDto, page: number, size: number): Observable<PageResponse<AssignationDto>> {
     return this.http.get<PageResponse<AssignationDto>>(
-      `${this.baseUrl}/assignations/assignationMatriculeActive/${user.actMat}`,
+      `${environment.baseUrl}/assignations/assignationMatriculeActive/${user.actMat}`,
       { params: { page: page.toString(), pageSize: size.toString() } }
     );
   }

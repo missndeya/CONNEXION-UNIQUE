@@ -33,6 +33,7 @@ export class NavigationService {
     }
 
     const modeChangerFonction =
+     // sessionStorage.getItem('modeChangerFonction') === 'true';
       sessionStorage.getItem('modeChangerFonction') === 'true';
 
 
