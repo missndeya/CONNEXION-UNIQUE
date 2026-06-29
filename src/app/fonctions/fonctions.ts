@@ -16,6 +16,7 @@ export class FonctionsComponent implements OnInit {
   assignations: AssignationDto[] = [];
   loadingId: string | null = null;
   currentPage = 1;
+  currentFonctId: String = "";
   readonly pageSize = 10;
   readonly supportedFonctions = ['GES', 'OPSCM', 'ORD'];//ORD est à ENLEVER 
 
@@ -36,7 +37,7 @@ export class FonctionsComponent implements OnInit {
     private router: Router,
     private assignationService: AssignationService,
     private navigationService: NavigationService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.assignations = history.state?.assignations ?? [];
