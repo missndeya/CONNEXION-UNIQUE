@@ -23,6 +23,7 @@ export class NavigationService {
 
 
   async acceder(module: ModuleDto, _assignation: AssignationDto): Promise<void> {
+    
     const currentUser = sessionStorage.getItem('currentUser');
     this.acteur = JSON.parse(currentUser || 'null') as ActeurDto | null;
 
@@ -51,20 +52,20 @@ export class NavigationService {
       }
     }
 
-    this.rediriger(module, code);
+    this.rediriger(module, code, _assignation.foncact_Id);
   }
 
   isSupporte(module: ModuleDto): boolean {
     return module.moduleSigle === 'EDCB' || module.moduleSigle === 'PEPB';
   }
 
-  private rediriger(module: ModuleDto, code?: string) {
+  private rediriger(module: ModuleDto, code: string, foncactId:string) {
     if (module.moduleSigle === 'EDCB') {
       window.location.href =
-        `${environment.dashboardExecutionUrl}/callback?cd=${encodeURIComponent(code ?? '')}`;
+        `${environment.dashboardExecutionUrl}/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
     } else if (module.moduleSigle === 'PEPB') {
       window.location.href =
-        `${environment.dashboardElaborationUrl}/callback?cd=${encodeURIComponent(code ?? '')}`;
+        `${environment.dashboardElaborationUrl}/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
     }
   }
 }

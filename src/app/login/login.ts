@@ -95,7 +95,7 @@ export class LoginComponent {
     this.assignationService.assignationParMatricule(this.currentUser, 0, this.pageSize).subscribe({
       next: (data) => {
         const assignations = data.content;
-        //console.log('Assignations:', assignations);
+        console.log('Assignations:', assignations);
         if (assignations.length > 1) {
           this.router.navigate(['/fonctions'], { state: { assignations } });
         } else if (assignations.length === 1) {
