@@ -23,6 +23,7 @@ export class NavigationService {
 
 
   async acceder(assignation: AssignationDto): Promise<void> {
+   // const currentUser = sessionStorage.getItem('currentUser');
     const currentUser = sessionStorage.getItem('currentUser');
     this.acteur = JSON.parse(currentUser || 'null') as ActeurDto | null;
 
@@ -32,6 +33,7 @@ export class NavigationService {
     }
 
     const modeChangerFonction =
+     // sessionStorage.getItem('modeChangerFonction') === 'true';
       sessionStorage.getItem('modeChangerFonction') === 'true';
 
 
@@ -56,9 +58,10 @@ export class NavigationService {
     const type = assignation.foncact_Typfonc_Id;
 
     if (this.dashboardExecution.includes(type)) {
+     // sysbudgep/dossier-marche-public/dossier-appel-offre/consultation
 
       window.location.href =
-        `${environment.dashboardExecutionUrl}/callback?cd=${encodeURIComponent(code ?? '')}`;
+        `${environment.dashboardExecutionUrl}/sysbudgep/callback?cd=${encodeURIComponent(code ?? '')}`;
 
     } else if (type === 'OPSCM') {
 

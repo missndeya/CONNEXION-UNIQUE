@@ -39,7 +39,7 @@ export class LoginComponent {
 
 
   ngOnInit(): void {
-  
+
     sessionStorage.clear();
 }
 
