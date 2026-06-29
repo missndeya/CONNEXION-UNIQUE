@@ -60,7 +60,7 @@ export class NavigationService {
   private rediriger(module: ModuleDto, code: string, foncactId:string) {
     if (module.moduleSigle === 'EDCB') {
       window.location.href =
-        `${environment.dashboardExecutionUrl}/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
+        `${environment.dashboardExecutionUrl}/sysbudgep/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
     } else if (module.moduleSigle === 'PEPB') {
       window.location.href =
         `${environment.dashboardElaborationUrl}/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;

@@ -8,7 +8,7 @@ export const environment = {
   dashboardElaborationUrl: 'http://localhost:62661',
   authUrl: 'http://localhost:4200/login',
   backElaborationUrl: 'http://localhost:8085/api',
-  backExecutionUrl: 'http://localhost:8012',
+  backExecutionUrl: 'http://localhost:8093',
  // baseUrl : 'https://dev1.dgf.sn:8444/sysbudgep-authentification'
   baseUrl : 'http://localhost:8093'
 };
