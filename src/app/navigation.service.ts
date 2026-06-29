@@ -26,6 +26,8 @@ export class NavigationService {
     const currentUser = sessionStorage.getItem('currentUser');
     this.acteur = JSON.parse(currentUser || 'null') as ActeurDto | null;
 
+    console.log('CCCCCCCCC ', this.acteur);
+
     if (!this.acteur) {
       this.router.navigate(['/login']);
       return;
@@ -36,6 +38,7 @@ export class NavigationService {
 
 
     let code = this.acteur?.code;
+    console.log('COOOOOOOOOO ', code);
 
     if (modeChangerFonction) {
 
