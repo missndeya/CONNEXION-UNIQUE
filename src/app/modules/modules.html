@@ -1,0 +1,59 @@
+<div class="page-wrapper">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-brand">
+      <div class="brand-logo">
+        <span class="logo-green">SYS</span><span class="logo-dark">BUDGE</span><span class="logo-greenP">P</span>
+      </div>
+      <p class="brand-tagline">Le Système Support du Budget <span class="highlight">Programme</span></p>
+    </div>
+    <div class="d-flex gap-2">
+      <button class="btn btn-deconnecter" (click)="seDeconnecter()">
+        &#x23FB; Se Déconnecter
+      </button>
+      <button class="btn btn-changer-fonction" (click)="changerFonction()" [disabled]="!peutChangerFonction">
+        &#x2190; Changer de Fonction
+      </button>
+    </div>
+  </header>
+
+  <div class="main-content d-flex justify-content-center align-items-center">
+
+    <div class="background-section position-absolute top-0 start-0 w-100 h-100">
+      <img src="assets/images/image.png" alt="SYSBUDGEP" class="bg-image w-100 h-100" />
+    </div>
+
+    <div class="content-overlay position-relative">
+
+      <div class="page-title mb-4 text-center">
+        <h4 class="fw-bold">Sélectionnez un module</h4>
+      </div>
+
+      <div *ngIf="loading" class="spinner-wrapper">
+        <div class="spinner-border spinner-modules" role="status">
+          <span class="visually-hidden">Chargement...</span>
+        </div>
+      </div>
+
+      <div class="cards-grid" *ngIf="!loading">
+        <div
+          class="module-card"
+          *ngFor="let module of modules"
+          [class.module-card--disabled]="!isDisponible(module)"
+          (click)="acceder(module)"
+        >
+          <div class="card-header-bar">
+            <span class="module-sigle">{{ module.moduleSigle }}</span>
+            <span class="module-code">{{ module.moduleCode }}</span>
+          </div>
+          <div class="card-body-content">
+            <p class="module-lib">{{ module.moduleLib }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

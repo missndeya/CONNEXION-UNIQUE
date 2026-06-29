@@ -63,6 +63,12 @@
   background: #00a85c;
   color: white;
 }
+.btn-acceder:disabled {
+  background: #e9ecef;
+  color: #adb5bd;
+  border-color: #ced4da;
+  cursor: not-allowed;
+}
 
 /* Pagination */
 .page-item.active .page-link {
