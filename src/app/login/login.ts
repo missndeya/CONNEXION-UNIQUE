@@ -98,10 +98,10 @@ export class LoginComponent {
         const assignations = data.content;
         console.log('Assignations:', assignations);
         if (assignations.length > 1) {
-          this.sharedService.showToast(`Bienvenue  ${fullname}`, 'success');
+          // this.sharedService.showToast(`Bienvenue  ${fullname}`, 'success');
           this.router.navigate(['/fonctions'], { state: { assignations } });
         } else if (assignations.length === 1) {
-          this.sharedService.showToast(`Bienvenue  ${fullname}`, 'success');
+          // this.sharedService.showToast(`Bienvenue  ${fullname}`, 'success');
           this.acceder(assignations[0]);
         } else {
           this.errorMessage = "Aucune fonction assignée à cet utilisateur.";

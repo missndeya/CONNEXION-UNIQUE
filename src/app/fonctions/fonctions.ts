@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AssignationDto } from '../dtos/assignation';
 import { AssignationService } from '../assignation.service';
 import { NavigationService } from '../navigation.service';
+import { ActeurDto } from '../dtos/acteur.dto';
 
 @Component({
   selector: 'app-fonctions',
@@ -17,10 +18,27 @@ export class FonctionsComponent implements OnInit {
   loadingId: string | null = null;
   currentPage = 1;
   currentFonctId: String = "";
-  readonly pageSize = 10;
+  readonly pageSize = 6;
   readonly supportedFonctions = ['GES', 'OPSCM', 'ORD','COF','OBS','AGO'];
+  currentUser: ActeurDto | null = null;
+
   isSupporte(assignation: AssignationDto): boolean {
     return this.supportedFonctions.includes(assignation.foncact_Typfonc_Id);
+  }
+
+  get fullname(): string {
+    if (!this.currentUser) return '';
+    return [this.currentUser.actPrenom, this.currentUser.actNom]
+      .filter(Boolean)
+      .join(' ') || this.currentUser.actMat;
+  }
+
+  get initials(): string {
+    if (!this.currentUser) return '';
+    const letters = [this.currentUser.actPrenom, this.currentUser.actNom]
+      .filter(Boolean)
+      .map(s => (s as string).charAt(0).toUpperCase());
+    return letters.length ? letters.join('') : this.currentUser.actMat.charAt(0).toUpperCase();
   }
 
   get totalPages(): number {
@@ -40,6 +58,8 @@ export class FonctionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.assignations = history.state?.assignations ?? [];
+    const user = sessionStorage.getItem('currentUser');
+    this.currentUser = user ? JSON.parse(user) as ActeurDto : null;
   }
 
   goToPage(page: number): void {

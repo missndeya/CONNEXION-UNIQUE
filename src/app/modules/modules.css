@@ -64,6 +64,27 @@
   font-weight: 600;
 }
 
+.user-fonction-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.3;
+}
+
+.user-fonction-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #00458f;
+}
+
+.user-fonction-badge {
+  font-size: 12px;
+  font-weight: 500;
+  color: #00458f;
+  margin-top: 2px;
+  letter-spacing: 0.2px;
+}
+
 .main-content {
   flex: 1;
   position: relative;
