@@ -8,12 +8,17 @@
       </div>
       <p class="brand-tagline">Le Système Support du Budget <span class="highlight">Programme</span></p>
     </div>
+    <div class="user-fonction-info" *ngIf="fullname">
+      <span class="user-fonction-name">{{ fullname }}</span>
+      <span class="user-fonction-badge" *ngIf="fonctionLib">{{ fonctionLib }}</span>
+    </div>
     <div class="d-flex gap-2">
       <button class="btn btn-deconnecter" (click)="seDeconnecter()">
         &#x23FB; Se Déconnecter
       </button>
       <button class="btn btn-changer-fonction" (click)="changerFonction()" [disabled]="!peutChangerFonction">
-        &#x2190; Changer de Fonction
+       ⟲  Changer de Fonction 
+      <!--  &#x21BB; -->
       </button>
     </div>
   </header>
