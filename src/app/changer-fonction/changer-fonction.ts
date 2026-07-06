@@ -30,7 +30,7 @@ export class ChangerFonction implements OnInit {
   ngOnInit(): void {
 
     // Quand l'utilisateur veut changer de fonction On garde le mode de changement de fonction
-    sessionStorage.setItem('modeChangerFonction', 'true');
+    sessionStorage.setItem('modeAutreApplication', 'true');
 
     const user = sessionStorage.getItem('currentUser');
 

@@ -34,15 +34,14 @@ export class NavigationService {
       return;
     }
 
-    const modeChangerFonction =
-     // sessionStorage.getItem('modeChangerFonction') === 'true';
-      sessionStorage.getItem('modeChangerFonction') === 'true';
+    const modeAutreApplication =
+     // sessionStorage.getItem('modeAutreApplication') === 'true';
+      sessionStorage.getItem('modeAutreApplication') === 'true';
 
 
     let code = this.acteur?.code;
-    console.log('COOOOOOOOOO ', code);
 
-    if (modeChangerFonction) {
+    if (modeAutreApplication) {
 
       const response = await firstValueFrom(
         this.authService.setInfos(this.acteur)

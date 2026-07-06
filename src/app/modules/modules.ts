@@ -43,7 +43,7 @@ export class ModulesComponent implements OnInit {
     private navigationService: NavigationService,
     private assignationService: AssignationService,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.assignation = history.state?.assignation ?? null;
@@ -70,6 +70,8 @@ export class ModulesComponent implements OnInit {
     } else {
       const tp = this.route.snapshot.queryParamMap.get('tp');
       if (tp) {
+        // Quand l'utilisateur veut changer de module On garde le mode de changement de module
+        sessionStorage.setItem('modeAutreApplication', 'true');
         this.loading = true;
         this.assignationService.modulesByTypeFonction(tp).subscribe({
           next: (modules) => {
@@ -91,7 +93,7 @@ export class ModulesComponent implements OnInit {
               this.assignation = data.content.find(a => a.foncact_Typfonc_Id === tp) ?? null;
               this.cdr.detectChanges();
             },
-            error: () => {}
+            error: () => { }
           });
         }
       }

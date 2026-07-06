@@ -10,8 +10,6 @@ import { environment } from '../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class AssignationService {
 
-  private readonly baseUrl = 'https://dev1.dgf.sn:8444/sysbudgep-authentification';
-  private readonly executionUrl = environment.backExecutionUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -25,7 +23,7 @@ export class AssignationService {
 
   modulesByTypeFonction(typeFonction: string): Observable<ModuleDto[]> {
     return this.http.get<ModuleDto[]>(
-      `${this.executionUrl}/assignations/modulesByTypeFonction/${typeFonction}`
+      `${environment.backExecutionUrl}/assignations/modulesByTypeFonction/${typeFonction}`
     );
   }
 }
