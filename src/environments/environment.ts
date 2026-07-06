@@ -14,24 +14,12 @@ export const environment = {
 
   // loginUrl: 'https://dev1.dgf.sn:8444/sysbudgep-authentification/auth/login',
   //private readonly loginUrl = '/proxy/sysbudgep-authentification/auth/login';
-<<<<<<< HEAD
-  loginUrl: 'http://localhost:8093/auth/login',
-  dashboardExecutionUrl: 'http://localhost:62661',
- // dashboardElaborationUrl: 'http://localhost:50317',
-  //dashboardElaborationUrl: 'http://localhost:62661',
-  dashboardElaborationUrl: 'https://dev1.dgf.sn',
-=======
-  // dashboardElaborationUrl: 'http://localhost:50317',
-  // baseUrl : 'https://dev1.dgf.sn:8444/sysbudgep-authentification'
-
-
-
-  /*PARTIE ELABORATION*/
   loginUrl: 'http://localhost:8012/auth/login',
-  //loginUrl: 'https://dev1.dgf.sn:8444/sysbudgep-authentification/auth/login',
-  dashboardExecutionUrl: 'https://dev1.dgf.sn',
-  dashboardElaborationUrl: 'http://localhost:50317',
->>>>>>> 342b7fe3c206bf62c238d9e9734cbcd794a4d559
+  //dashboardExecutionUrl: 'http://localhost:62661',
+  dashboardExecutionUrl: 'https://dev1.dgf.sn/',
+ dashboardElaborationUrl: 'http://localhost:50317',
+  //dashboardElaborationUrl: 'http://localhost:62661',
+  //dashboardElaborationUrl: 'https://dev1.dgf.sn',
   authUrl: 'http://localhost:4200/login',
   backElaborationUrl: 'http://localhost:8085/api',
   backExecutionUrl: 'http://localhost:8012',
