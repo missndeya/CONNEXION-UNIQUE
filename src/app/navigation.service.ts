@@ -61,8 +61,8 @@ export class NavigationService {
 
   private rediriger(module: ModuleDto, code: string, foncactId:string) {
     if (module.moduleSigle === 'EDCB') {
-      window.location.href =
-        `${environment.dashboardExecutionUrl}/sysbudgep/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
+      console.log('RRRRRRRRR ',environment.dashboardExecutionUrl);
+      window.location.href = `${environment.dashboardExecutionUrl}/sysbudgep/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
     } else if (module.moduleSigle === 'PEPB') {
       window.location.href =
         `${environment.dashboardElaborationUrl}/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;

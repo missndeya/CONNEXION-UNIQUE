@@ -16,7 +16,7 @@ export class AssignationService {
 
     assignationParMatricule(user: ActeurDto, page: number, size: number): Observable<PageResponse<AssignationDto>> {
     return this.http.get<PageResponse<AssignationDto>>(
-      `${environment.baseUrl}/assignations/assignationMatriculeActive/${user.actMat}`,
+      `${environment.backExecutionUrl}/assignations/assignationMatriculeActive/${user.actMat}`,
       { params: { page: page.toString(), pageSize: size.toString() } }
     );
   }
