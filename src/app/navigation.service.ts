@@ -27,19 +27,21 @@ export class NavigationService {
     const currentUser = sessionStorage.getItem('currentUser');
     this.acteur = JSON.parse(currentUser || 'null') as ActeurDto | null;
 
+    console.log('CCCCCCCCC ', this.acteur);
+
     if (!this.acteur) {
       this.router.navigate(['/login']);
       return;
     }
 
-    const modeChangerFonction =
-     // sessionStorage.getItem('modeChangerFonction') === 'true';
-      sessionStorage.getItem('modeChangerFonction') === 'true';
+    const modeAutreApplication =
+     // sessionStorage.getItem('modeAutreApplication') === 'true';
+      sessionStorage.getItem('modeAutreApplication') === 'true';
 
 
     let code = this.acteur?.code;
 
-    if (modeChangerFonction) {
+    if (modeAutreApplication) {
 
       const response = await firstValueFrom(
         this.authService.setInfos(this.acteur)
@@ -61,8 +63,8 @@ export class NavigationService {
     console.log('CODE BACKEND',code);
     
     if (module.moduleSigle === 'EDCB') {
-      window.location.href =
-        `${environment.dashboardExecutionUrl}/sysbudgep/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
+      console.log('RRRRRRRRR ',environment.dashboardExecutionUrl);
+      window.location.href = `${environment.dashboardExecutionUrl}/sysbudgep/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
     } else if (module.moduleSigle === 'PEPB') {
       window.location.href =
         `${environment.dashboardElaborationUrl}/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;

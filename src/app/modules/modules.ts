@@ -43,7 +43,7 @@ export class ModulesComponent implements OnInit {
     private navigationService: NavigationService,
     private assignationService: AssignationService,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.assignation = history.state?.assignation ?? null;
@@ -68,30 +68,32 @@ export class ModulesComponent implements OnInit {
         }
       });
     } else {
-      const tp = this.route.snapshot.queryParamMap.get('tp');
-      if (tp) {
+      const tf = this.route.snapshot.queryParamMap.get('tf');
+      if (tf) {
+        // Quand l'utilisateur veut changer de module On garde le mode de changement de module
+        sessionStorage.setItem('modeAutreApplication', 'true');
         this.loading = true;
-        this.assignationService.modulesByTypeFonction(tp).subscribe({
+        this.assignationService.modulesByTypeFonction(tf).subscribe({
           next: (modules) => {
             this.modules = modules;
             this.loading = false;
             this.cdr.detectChanges();
           },
           error: (err) => {
-            console.error('erreur modulesByTypeFonction tp', err);
+            console.error('erreur modulesByTypeFonction tf', err);
             this.loading = false;
             this.cdr.detectChanges();
           }
         });
-
+      
         if (this.currentUser) {
           this.assignationService.assignationParMatricule(this.currentUser, 0, 10).subscribe({
             next: (data) => {
               this.assignations = data.content;
-              this.assignation = data.content.find(a => a.foncact_Typfonc_Id === tp) ?? null;
+              this.assignation = data.content.find(a => a.foncact_Typfonc_Id === tf) ?? null;
               this.cdr.detectChanges();
             },
-            error: () => {}
+            error: () => { }
           });
         }
       }

@@ -10,22 +10,20 @@ import { environment } from '../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class AssignationService {
 
-  private readonly baseUrl = 'https://dev1.dgf.sn:8444/sysbudgep-authentification';
-  private readonly executionUrl = environment.backExecutionUrl;
 
   constructor(private http: HttpClient) {}
 
 
     assignationParMatricule(user: ActeurDto, page: number, size: number): Observable<PageResponse<AssignationDto>> {
     return this.http.get<PageResponse<AssignationDto>>(
-      `${environment.baseUrl}/assignations/assignationMatriculeActive/${user.actMat}`,
+      `${environment.backExecutionUrl}/assignations/assignationMatriculeActive/${user.actMat}`,
       { params: { page: page.toString(), pageSize: size.toString() } }
     );
   }
 
   modulesByTypeFonction(typeFonction: string): Observable<ModuleDto[]> {
     return this.http.get<ModuleDto[]>(
-      `${this.executionUrl}/assignations/modulesByTypeFonction/${typeFonction}`
+      `${environment.backExecutionUrl}/assignations/modulesByTypeFonction/${typeFonction}`
     );
   }
 }
