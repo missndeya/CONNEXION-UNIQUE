@@ -43,5 +43,5 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 
-// NE PAS ENVOYER LE FICHIER ENVIRONMENT
-src/environments/
+# NE PAS ENVOYER LE FICHIER ENVIRONMENT
+src/environments/*
