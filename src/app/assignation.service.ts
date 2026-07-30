@@ -16,14 +16,14 @@ export class AssignationService {
 
     assignationParMatricule(user: ActeurDto, page: number, size: number): Observable<PageResponse<AssignationDto>> {
     return this.http.get<PageResponse<AssignationDto>>(
-      `${environment.backExecutionUrl}/assignations/assignationMatriculeActive/${user.actMat}`,
+      `${environment.authService}/assignations/assignationMatriculeActive/${user.actMat}`,
       { params: { page: page.toString(), pageSize: size.toString() } }
     );
   }
 
   modulesByTypeFonction(typeFonction: string): Observable<ModuleDto[]> {
     return this.http.get<ModuleDto[]>(
-      `${environment.backExecutionUrl}/assignations/modulesByTypeFonction/${typeFonction}`
+      `${environment.authService}/assignations/modulesByTypeFonction/${typeFonction}`
     );
   }
 }
