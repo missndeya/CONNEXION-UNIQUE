@@ -19,26 +19,44 @@
 
         <div class="mb-3">
           <label for="username" class="form-label fw-semibold" style="color:#00458f">Identifiant</label>
-          <input
-            type="text"
-            id="username"
-            [(ngModel)]="username"
-            name="username"
-            class="form-control"
-            [class.is-invalid]="errorMessage && !username.trim()"
-          />
+          <input type="text" id="username" [(ngModel)]="username" name="username" class="form-control"
+            (ngModelChange)="username = $event.toUpperCase()" [class.is-invalid]="errorMessage && !username.trim()" />
         </div>
 
         <div class="mb-3">
-          <label for="password" class="form-label fw-semibold" style="color:#00458f">Mot de Passe</label>
+          <div class="position-relative">
+            <input [type]="showPassword ? 'text' : 'password'" id="password" [(ngModel)]="password" name="password"
+              class="form-control pe-5" (ngModelChange)="password = $event.toUpperCase()"
+              [class.is-invalid]="errorMessage && !password.trim()" />
+            <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor:pointer"
+              (click)="togglePassword()">
+
+              <i [class]="showPassword ? 'bi bi-eye-slash-fill' : 'bi bi-eye-fill'"></i>
+
+            </span>
+          </div>
+          <!-- <mat-form-field appearance="outline" class="w-100">
+            <input matInput [type]="hidePassword ? 'password' : 'text'" id="password" [(ngModel)]="password"
+              name="password" (ngModelChange)="password = $event.toUpperCase()"
+              [class.is-invalid]="errorMessage && !password.trim()" />
+
+            <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword"
+              [attr.aria-label]="hidePassword ? 'Afficher le mot de passe' : 'Masquer le mot de passe'">
+              <mat-icon>
+                {{ hidePassword ? 'visibility' : 'visibility_off' }}
+              </mat-icon>
+            </button>
+          </mat-form-field> -->
+          <!-- <label for="password" class="form-label fw-semibold" style="color:#00458f">Mot de Passe</label>
           <input
             type="password"
             id="password"
             [(ngModel)]="password"
             name="password"
             class="form-control"
+            (ngModelChange)="password = $event.toUpperCase()"
             [class.is-invalid]="errorMessage && !password.trim()"
-          />
+          /> -->
         </div>
 
         <div *ngIf="errorMessage" class="alert alert-danger py-2 px-3 mb-3" role="alert">
@@ -59,7 +77,7 @@
         </button>
       </form>
 
-     
+
     </div>
   </div>
 </div>
