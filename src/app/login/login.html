@@ -24,6 +24,9 @@
         </div>
 
         <div class="mb-3">
+          <label for="password" class="form-label fw-semibold" style="color:#00458f">
+            Mot de Passe
+          </label>
           <div class="position-relative">
             <input [type]="showPassword ? 'text' : 'password'" id="password" [(ngModel)]="password" name="password"
               class="form-control pe-5" (ngModelChange)="password = $event.toUpperCase()"
