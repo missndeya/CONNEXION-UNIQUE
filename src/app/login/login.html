@@ -66,15 +66,15 @@
           {{ errorMessage }}
         </div>
 
-        <div class="mb-4">
+        <!-- <div class="mb-4">
           <label for="database" class="form-label fw-semibold" style="color:#00458f">Base de données</label>
           <select [(ngModel)]="database" name="database" id="database" class="form-select">
             <option value="BASE DE FORMATION (DEBUG)">BASE DE FORMATION (DEBUG)</option>
             <option value="BASE DE PRODUCTION">BASE DE PRODUCTION</option>
           </select>
-        </div>
+        </div> -->
 
-        <button type="submit" class="btn btn-login w-100" [disabled]="loading">
+        <button type="submit" class="btn btn-login w-100 mt-4" [disabled]="loading">
           <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status"></span>
           {{ loading ? 'Connexion...' : '⮕ Se Connecter' }}
         </button>
