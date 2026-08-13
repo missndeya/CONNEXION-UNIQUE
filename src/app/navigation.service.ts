@@ -63,11 +63,11 @@ export class NavigationService {
     console.log('CODE BACKEND',code);
     
     if (module.moduleSigle === 'EDCB') {
-      console.log('RRRRRRRRR ',environment.dashboardExecutionUrl);
-      window.location.href = `${environment.dashboardExecutionUrl}/sysbudgep/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
+      window.location.href =
+        `${environment.frontExecution}/sysbudgep/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
     } else if (module.moduleSigle === 'PEPB') {
       window.location.href =
-        `${environment.dashboardElaborationUrl}/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
+        `${environment.frontElaboration}/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
     }
   }
 }

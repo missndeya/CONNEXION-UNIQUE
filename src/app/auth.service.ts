@@ -11,10 +11,10 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(identifiant: IdentifiantDto): Observable<ActeurDto> {
-    return this.http.post<ActeurDto>(environment.loginUrl, identifiant);
+    return this.http.post<ActeurDto>(`${environment.authService}/auth/login`, identifiant);
   }
 
   setInfos(acteur: ActeurDto): Observable<any> {
-    return this.http.post<ActeurDto>(`${environment.backExecutionUrl}/auth/setInfos`, acteur);
+    return this.http.post<ActeurDto>(`${environment.authService}/auth/setInfos`, acteur);
   }
 }

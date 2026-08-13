@@ -14,7 +14,7 @@ import { AssignationDto } from '../dtos/assignation';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
@@ -24,6 +24,9 @@ export class LoginComponent {
   database = 'BASE DE FORMATION (DEBUG)';
   errorMessage = '';
   loading = false;
+  showPassword = false;
+
+  
 
   private currentUser: ActeurDto | null = null;
   private readonly pageSize = 10;
@@ -128,5 +131,9 @@ export class LoginComponent {
         this.errorMessage = "Erreur lors du chargement des modules.";
       }
     });
+  }
+
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
   }
 }
