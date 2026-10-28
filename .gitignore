@@ -44,4 +44,8 @@ __screenshots__/
 Thumbs.db
 
 # NE PAS ENVOYER LE FICHIER ENVIRONMENT
+<<<<<<< HEAD
+src/environments/
+=======
 src/environments/*
+>>>>>>> 7a489383d0db14bc9af83c6e015a5ff758a0bace

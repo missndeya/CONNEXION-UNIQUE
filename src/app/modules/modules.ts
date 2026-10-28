@@ -85,7 +85,7 @@ export class ModulesComponent implements OnInit {
             this.cdr.detectChanges();
           }
         });
-      
+
         if (this.currentUser) {
           this.assignationService.assignationParMatricule(this.currentUser, 0, 10).subscribe({
             next: (data) => {
