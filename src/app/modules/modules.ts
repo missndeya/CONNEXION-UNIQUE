@@ -20,7 +20,7 @@ export class ModulesComponent implements OnInit {
   private assignation: AssignationDto | null = null;
   assignations: AssignationDto[] = [];
   currentUser: ActeurDto | null = null;
-  private readonly siglesSupportes = ['EDCB', 'PEPB'];
+  private readonly siglesSupportes = ['EDCB', 'PPPB'];
 
   get peutChangerFonction(): boolean {
     return this.assignations.length > 1;
@@ -85,7 +85,7 @@ export class ModulesComponent implements OnInit {
             this.cdr.detectChanges();
           }
         });
-      
+
         if (this.currentUser) {
           this.assignationService.assignationParMatricule(this.currentUser, 0, 10).subscribe({
             next: (data) => {

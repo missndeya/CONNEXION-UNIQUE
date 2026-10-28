@@ -23,7 +23,7 @@ export class NavigationService {
 
 
   async acceder(module: ModuleDto, _assignation: AssignationDto): Promise<void> {
-    
+
     const currentUser = sessionStorage.getItem('currentUser');
     this.acteur = JSON.parse(currentUser || 'null') as ActeurDto | null;
 
@@ -56,16 +56,16 @@ export class NavigationService {
   }
 
   isSupporte(module: ModuleDto): boolean {
-    return module.moduleSigle === 'EDCB' || module.moduleSigle === 'PEPB';
+    return module.moduleSigle === 'EDCB' || module.moduleSigle === 'PPPB';
   }
 
   private rediriger(module: ModuleDto, code: string, foncactId:string) {
     console.log('CODE BACKEND',code);
-    
+
     if (module.moduleSigle === 'EDCB') {
       window.location.href =
         `${environment.frontExecution}/sysbudgep/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
-    } else if (module.moduleSigle === 'PEPB') {
+    } else if (module.moduleSigle === 'PPPB') {
       window.location.href =
         `${environment.frontElaboration}/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
     }
