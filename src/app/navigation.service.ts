@@ -56,7 +56,7 @@ export class NavigationService {
   }
 
   isSupporte(module: ModuleDto): boolean {
-    return module.moduleSigle === 'EDCB' || module.moduleSigle === 'PEPB';
+    return module.moduleSigle === 'EDCB' || module.moduleSigle === 'PPPB';
   }
 
   private rediriger(module: ModuleDto, code: string, foncactId:string) {
@@ -65,7 +65,7 @@ export class NavigationService {
     if (module.moduleSigle === 'EDCB') {
       window.location.href =
         `${environment.frontExecution}/sysbudgep/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
-    } else if (module.moduleSigle === 'PEPB') {
+    } else if (module.moduleSigle === 'PPPB') {
       window.location.href =
         `${environment.frontElaboration}/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
     }

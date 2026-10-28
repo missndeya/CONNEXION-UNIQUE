@@ -19,7 +19,7 @@
 
         <div class="mb-3">
           <label for="username" class="form-label fw-semibold" style="color:#00458f">Identifiant</label>
-          <input type="text" id="username" [(ngModel)]="username" name="username" class="form-control"
+          <input type="text" id="username" autofocus [(ngModel)]="username" name="username" class="form-control"
             (ngModelChange)="username = $event.toUpperCase()" [class.is-invalid]="errorMessage && !username.trim()" />
         </div>
 
