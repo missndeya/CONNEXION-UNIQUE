@@ -60,7 +60,7 @@ export class NavigationService {
   } */
 
   private rediriger(module: ModuleDto, code: string, foncactId:string) {
-    console.log('CODE BACKEND',code);
+    //console.log('CODE BACKEND',code);
 
     if (module.moduleSigle === 'EDCB') {
       window.location.href =
