@@ -65,7 +65,7 @@ export class NavigationService {
     if (module.moduleSigle === 'EDCB') {
       window.location.href =
         `${environment.frontExecution}/sysbudgep/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
-    } else if (module.moduleSigle === 'PPPB') {
+    } else if (module.moduleSigle === 'PPPB'|| module.moduleSigle === 'RCMS') {
       window.location.href =
         `${environment.frontElaboration}/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
     }
