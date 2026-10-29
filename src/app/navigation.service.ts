@@ -55,19 +55,19 @@ export class NavigationService {
     this.rediriger(module, code, _assignation.foncact_Id);
   }
 
-  isSupporte(module: ModuleDto): boolean {
+  /* isSupporte(module: ModuleDto): boolean {
     return module.moduleSigle === 'EDCB' || module.moduleSigle === 'PPPB';
-  }
+  } */
 
   private rediriger(module: ModuleDto, code: string, foncactId:string) {
-    console.log('CODE BACKEND',code);
+    //console.log('CODE BACKEND',code);
 
     if (module.moduleSigle === 'EDCB') {
       window.location.href =
         `${environment.frontExecution}/sysbudgep/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
-    } else if (module.moduleSigle === 'PPPB') {
+    } else if (module.moduleSigle === 'PPPB'|| module.moduleSigle === 'RCMS') {
       window.location.href =
-        `${environment.frontElaboration}/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}`;
+        `${environment.frontElaboration}/callback?cd=${encodeURIComponent(code ?? '')}&fc=${encodeURIComponent(foncactId)}&md=${encodeURIComponent(module.moduleSigle)}`;
     }
   }
 }

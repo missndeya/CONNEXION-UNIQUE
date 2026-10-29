@@ -69,6 +69,8 @@ export class FonctionsComponent implements OnInit {
   }
 
   acceder(assignation: AssignationDto): void {
+    //console.log("ASSIGNATION",  assignation.foncact_Id);
+    
     this.loadingId = assignation.foncact_Id;
     this.assignationService.modulesByTypeFonction(assignation.foncact_Typfonc_Id).subscribe({
       next: (modules) => {
